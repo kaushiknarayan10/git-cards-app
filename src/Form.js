@@ -8,11 +8,15 @@ class Form extends React.Component {
         const resp = await fetch(`https://api.github.com/users/${this.state.userName}`, {
             method:'GET'
         });
-        const jsondata = await resp.json();
-
-        this.props.onSubmit(jsondata);
-
-        this.setState({userName : ''});
+        if(resp.ok){
+            const jsondata = await resp.json();
+            this.props.onSubmit(jsondata);
+            this.setState({userName : ''});
+        }
+        else{
+            this.setState({userName : ''});
+            alert("User Not Found")
+        }
 
     }
     render(){

@@ -12,7 +12,8 @@ class App extends React.Component{
 
     this.setState(prevState => ({
       profiles : [...prevState.profiles, newProfile]
-    }))
+    })
+    )
   };
 
 
